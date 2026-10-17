@@ -1,0 +1,65 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "dev",
+            "displayName": "Dev: debug + AddressSanitizer + UBSan",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/dev",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "LEARN_SANITIZERS": "address,undefined"
+            }
+        },
+        {
+            "name": "tsan",
+            "displayName": "ThreadSanitizer (concurrency exercises)",
+            "inherits": "dev",
+            "binaryDir": "${sourceDir}/build/tsan",
+            "cacheVariables": {
+                "LEARN_SANITIZERS": "thread"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release (benchmarks)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "LEARN_SANITIZERS": ""
+            }
+        },
+        {
+            "name": "tidy",
+            "displayName": "Dev build with clang-tidy diagnostics",
+            "inherits": "dev",
+            "binaryDir": "${sourceDir}/build/tidy",
+            "cacheVariables": {
+                "LEARN_CLANG_TIDY": "ON"
+            }
+        },
+        {
+            "name": "reference",
+            "displayName": "Teacher reference solution (validates the tests)",
+            "inherits": "dev",
+            "binaryDir": "${sourceDir}/build/reference",
+            "cacheVariables": {
+                "LEARN_USE_REFERENCE": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        { "name": "dev", "configurePreset": "dev" },
+        { "name": "tsan", "configurePreset": "tsan" },
+        { "name": "release", "configurePreset": "release" },
+        { "name": "tidy", "configurePreset": "tidy" },
+        { "name": "reference", "configurePreset": "reference" }
+    ],
+    "testPresets": [
+        { "name": "dev", "configurePreset": "dev", "output": { "outputOnFailure": true } },
+        { "name": "tsan", "configurePreset": "tsan", "output": { "outputOnFailure": true } },
+        { "name": "release", "configurePreset": "release", "output": { "outputOnFailure": true } },
+        { "name": "reference", "configurePreset": "reference", "output": { "outputOnFailure": true } }
+    ]
+}

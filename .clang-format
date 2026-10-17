@@ -1,0 +1,26 @@
+# Layout rules from docs/engineering-practices.md (CPP-STY-1, CPP-CON-1 east const).
+BasedOnStyle: LLVM
+Standard: c++17
+IndentWidth: 4
+ColumnLimit: 120
+UseTab: Never
+BreakBeforeBraces: Allman
+AccessModifierOffset: -4
+PointerAlignment: Left
+QualifierAlignment: Right
+InsertBraces: true
+FixNamespaceComments: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortLambdasOnASingleLine: All
+AlignAfterOpenBracket: DontAlign
+BreakBeforeBinaryOperators: All
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+IndentCaseLabels: false
+SpacesBeforeTrailingComments: 1
+IncludeBlocks: Preserve
+SortIncludes: CaseSensitive
