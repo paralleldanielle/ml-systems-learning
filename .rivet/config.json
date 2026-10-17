@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "context_dir": ".rivet/context",
+  "execution_profile": "orchestrated",
+  "orchestration": {
+    "max_calls": 20,
+    "worker_models": []
+  },
+  "gated_effects": [
+    "destructive_external",
+    "external_compute",
+    "merge",
+    "pull_request",
+    "push"
+  ]
+}
